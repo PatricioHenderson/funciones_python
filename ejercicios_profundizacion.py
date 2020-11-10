@@ -15,6 +15,7 @@ __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
+import PHVtools
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -54,7 +55,10 @@ def ej2():
     de números generados.
     Imprimir en pantalla la lista ordenada
     '''
-
+    
+    dados= PHVtools.lista_aleatoria(1,6,5)
+    resultados_ordenados= PHVtools.ordenar(dados)
+    print(resultados_ordenados)
 
 def ej3():
     print("Jugando a los dados")
@@ -88,7 +92,25 @@ def ej3():
 
     '''
 
-
+    resultados= PHVtools.lista_aleatoria(1,6,5)
+    repeticion_1= print("El numero 1 aparece ", resultados.count(1))
+    repeticion_2= print("El numero 2 aparece ", resultados.count(2))
+    repeticion_3= print("El numero 3 aparece ", resultados.count(3))
+    repeticion_4= print("El numero 4 aparece ", resultados.count(4))
+    repeticion_5= print("El numero 5 aparece ", resultados.count(5))
+    repeticion_6= print("El numero 1 aparece ", resultados.count(6))
+    if max(resultados, key=resultados.count) == 1 :
+        print("El numero más repetido es: ", max(resultados, key=resultados.count))
+    else:
+        repeticiones= max(resultados, key=resultados.count)
+        lista_repetidos = []
+        for i in resultados:
+            if repeticiones == i:
+                lista_repetidos.append(i)       
+            print(lista_repetidos)
+        print("Los numeros más repetidos son : ", lista_repetidos, "y aparecen ", repeticiones, "veces" )
+    
+    
 def ej4():
     print("Ahora sí! buena suerte :)")
 
@@ -144,11 +166,33 @@ def ej4():
     guardados" tenga "generala", es decir, 5 números iguales.
 
     '''
+    inicio = 1
+    fin = 6
+    cantidad = 5
+    dados_guardados = []
+    intentos = 0
 
+    dados_tirados = PHVtools.lista_aleatoria(inicio,fin,cantidad)
+    intentos += 1
+    mas_salidor = max(dados_tirados, key=dados_tirados.count)
+    for i in dados_tirados:
+        if i == mas_salidor:
+            dados_guardados.append(i)
+    cantidad_guardados=len(dados_guardados)    
+    while cantidad_guardados < 5 :
+        intentos += 1
+        cantidad = (5 - cantidad_guardados)
+        dados_tirados = PHVtools.lista_aleatoria(inicio,fin,cantidad)
+        for i in dados_tirados:
+            if i == mas_salidor:
+                dados_guardados.append(i)
+        cantidad_guardados=len(dados_guardados)
+    print("Generala de N° {} obtenida en {} intentos" .format(dados_guardados, intentos) )
+    
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
     # ej1()
-    # ej2()
-    # ej3()
-    # ej4()
+    #ej2()
+    #ej3()
+    ej4()

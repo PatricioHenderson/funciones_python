@@ -4,34 +4,62 @@ Funciones [Python]
 Ejercicios de práctica
 ---------------------------
 Autor: Inove Coding School
-Version: 1.2
+Version: 1.2    
 
 Descripcion:
 Programa creado para poner a prueba los conocimientos
 adquiridos durante la clase
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
-__version__ = "1.2"
+__author__ = "Patricio Henderson"
+__email__ = "patriciohenderson@hotmail.com"
+__version__ = "1.3"
 
 import random
-
+import statistics
 
 def imprimir_nombre(nombre, apellido):
-    pass
+    print("Nombre: {} Apellido {}" .format(nombre,apellido))
+    #print("Nombre : {} \nApellido {}" )
     # En este lugar debe colocar el "print" e imprimir
     # en pantalla el nombre y apellido que vienen por parámetro
     # print(.....)
 
 
 def promedio(numeros):
+    if len(numeros) == 0:
+        print("No hay numeros en la lista")
+    else:
+        #Realizo el calculo de dos formas para corroborar que llego al mismo resultado
+        sumatoria_numeros = sum(numeros) 
+        cantidad_numeros = len(numeros)
+        promedio_2 = sumatoria_numeros / cantidad_numeros
+        promedio = statistics.mean(numeros)
+        return(promedio)
+    #return  promedio 
     # Alumno:
     # 1) calcule el promedio
     # 2) use "return" para retornar ese valor
-    pass  # Cuando termine de implementar está función borrar "pass"
+    # Cuando termine de implementar está función borrar "pass"
 
+def ordenar(numeros):
+    if len(numeros) == 0: 
+        print("No hay numeros en la lista")
+    else:        
+        lista_orden = sorted(numeros, reverse=True)
+        #Ordenamos de mayor a menor para ver si funciona o solo imprime la misma lista por defecto
+        return  (lista_orden)
+def lista_aleatoria(inicio, fin, cantidad):
+    lista = []
+    while len(lista) < cantidad:
+         numero = random.randrange(inicio, fin+1)
+         lista.append(numero)
+    return(lista)
 
+def contar(lista):
+    buscado = int(input("Introducir número a buscar repetición: "))
+    repetido = lista.count(buscado)
+    return(repetido)
 def ej1():
     print('Mi primera funcion')
     # Realice una función llamada "imprimir_nombre"
@@ -39,7 +67,9 @@ def ej1():
     # Esa función ya se encuentra a medio armar al principio de este archivo.
     # Debe cumpletar la función para que se imprima en pantalla su nombre y apellido
     # Debe invocar a la función como:
-    imprimir_nombre('mi_nombre', 'mi_apellido')
+    mi_nombre = str(input("Introducir nombre: "))
+    mi_apellido = str(input("Introducir apellido: "))
+    imprimir_nombre(mi_nombre, mi_apellido)
 
     # Reemplazar por su nombre y apellido los textos
 
@@ -70,12 +100,17 @@ def ej2():
     imprima en pantalla el resultado
 
     '''
+
+
     # La función ya se encuentra definida arriba de todo en el archivo,
     # busque al princpio de todo "def promedio"
     # Ya la función fue preparada para que usted le pase "numeros"
     # como parámetro, falta que calcule el promedio y retorne el valor
     # resultante.
-
+    
+    promedio_re = promedio (numeros)
+    print("Promedio : {}" .format(promedio_re))
+    
     # Llamar a la función en este lugar y capturar el valor del retorno
     # promedio_re
 
@@ -101,7 +136,8 @@ def ej3():
     # lista_ordenada = ordenar(numeros)
     # Imprimir en pantalla "lista_ordenada" que tendrá
     # los valores retornado por la función ordenar
-
+    lista_ordenada = ordenar(numeros)
+    print(lista_ordenada)
 
 def ej4():
     # Ejercicios con modulos del sistema
@@ -139,7 +175,9 @@ def ej4():
     # Invocar lista_aleatoria
     # mi_lista_aleatorio = lista_aleatoria(inicio, fin, cantidad)
     # print(mi_lista_aleatorio)
-
+    milista = lista_aleatoria(inicio, fin, cantidad)
+    print(milista)
+        
 
 def ej5():
     # Ejercicios de listas y métodos
@@ -158,6 +196,11 @@ def ej5():
 
     '''
 
+    lista_numeros=lista_aleatoria(0,9,cantidad_numeros)
+    repeticion = contar(lista_numeros)
+    print(lista_numeros, repeticion)
+
+
     # Por ejemplo creo una lista de 5 elemtnos
     # lista_numeros = lista_aleatoria(...,...,cantidad_numeros)
     # Luego quiero averiguar cuantas veces se repite el numero 3
@@ -166,8 +209,8 @@ def ej5():
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    ej1()
-    # ej2()
-    # ej3()
-    # ej4()
-    # ej5()
+    #ej1()
+    #ej2()
+    #ej3()
+    #ej4()
+    #ej5()
