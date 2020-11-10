@@ -98,19 +98,22 @@ def ej3():
     repeticion_3= print("El numero 3 aparece ", resultados.count(3))
     repeticion_4= print("El numero 4 aparece ", resultados.count(4))
     repeticion_5= print("El numero 5 aparece ", resultados.count(5))
-    repeticion_6= print("El numero 1 aparece ", resultados.count(6))
-    if max(resultados, key=resultados.count) == 1 :
-        print("El numero más repetido es: ", max(resultados, key=resultados.count))
-    else:
-        repeticiones= max(resultados, key=resultados.count)
-        lista_repetidos = []
-        for i in resultados:
-            if repeticiones == i:
-                lista_repetidos.append(i)       
-            print(lista_repetidos)
-        print("Los numeros más repetidos son : ", lista_repetidos, "y aparecen ", repeticiones, "veces" )
-    
-    
+    repeticion_6= print("El numero 6 aparece ", resultados.count(6))
+    lista_repetidos = []
+
+    mas_repeticiones = max(resultados, key=resultados.count)
+    cantidad_repeticiones = 0
+    for i in resultados:
+        if i == mas_repeticiones:
+            cantidad_repeticiones += 1
+    print("El numero más repetido fue {} y se reptio {} veces" .format(mas_repeticiones , cantidad_repeticiones))
+    for i in resultados:
+        if cantidad_repeticiones == resultados.count(i):
+            lista_repetidos.append(i)
+    print("los mas repetidos fueron")
+        
+
+    # Acá la consulta es como puedo hacer para ver si hay 2 numeros que se repitieron más veces.
 def ej4():
     print("Ahora sí! buena suerte :)")
 
@@ -194,5 +197,5 @@ if __name__ == '__main__':
     print("Ejercicios de práctica")
     # ej1()
     #ej2()
-    #ej3()
-    ej4()
+    ej3()
+    #ej4()
